@@ -220,6 +220,21 @@ export const DOMAIN_DATA = {
     type: "blue_giant",
     radius: 6.0,
   },
+  alaa: {
+    title: "Alaa",
+    subtitle: "A soul as bright as stardust",
+    color: "#ff6eb4",
+    emissive: "#cc1177",
+    spectralClass: "Rose-type Blossom Star",
+    magnitude: "♡ ∞",
+    temp: "3,200 K",
+    description:
+      "Alaa is a rare and radiant soul — kind beyond measure, warm as a summer sunrise, and as beautiful on the inside as she is on the outside. She carries grace in every step, joy in every word, and an endless sparkle that lights up every corner of the universe around her. The stars themselves take notes.",
+    concepts: ["Kindness", "Grace", "Radiance", "Joy", "Authenticity"],
+    distance: "♡ 0.0 ly",
+    type: "blossom_star",
+    radius: 6.2,
+  },
 };
 
 export type DomainId = keyof typeof DOMAIN_DATA;
@@ -246,6 +261,7 @@ export const SPECIAL_NODES: StarNode[] = [
   { id: "arts", position: new THREE.Vector3(-52, 4, 10), color: "#e060ff" },
   { id: "business", position: new THREE.Vector3(10, -5, 56), color: "#40e080" },
   { id: "tech", position: new THREE.Vector3(54, 3, -14), color: "#00eeff" },
+  { id: "alaa", position: new THREE.Vector3(-18, 8, -62), color: "#ff6eb4" },
 ];
 
 export const DOMAIN_IDS = SPECIAL_NODES.map((n) => n.id);

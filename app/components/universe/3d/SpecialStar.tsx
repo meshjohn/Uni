@@ -43,8 +43,9 @@ export function SpecialStar({
   );
 
   const R = data.radius,
-    hasRing = data.type === "red_giant",
-    hasMoon = data.type === "sun_like";
+    hasRing = data.type === "red_giant" || data.type === "blossom_star",
+    hasMoon = data.type === "sun_like" || data.type === "blossom_star",
+    hasCorona = data.type === "blue_giant" || data.type === "white_star" || data.type === "blossom_star";
   const { camera } = useThree();
 
   useFrame(({ clock }) => {
@@ -130,7 +131,7 @@ export function SpecialStar({
             ))}
           </group>
         )}
-        {(data.type === "blue_giant" || data.type === "white_star") && (
+        {hasCorona && (
           <mesh ref={coronaRef}>
             <planeGeometry args={[R * 14, R * 14]} />
             <meshBasicMaterial
