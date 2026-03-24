@@ -106,6 +106,35 @@ export function getStarTexture(type: string) {
       ctx.lineTo(cx + Math.cos(a) * r, cy + Math.sin(a) * r);
       ctx.stroke();
     }
+  } else if (type === "blossom_star") {
+    const g = ctx.createRadialGradient(cx, cy, 0, cx, cy, SIZE / 2);
+    g.addColorStop(0, "rgba(255,255,255,1)");
+    g.addColorStop(0.06, "rgba(255,230,245,1)");
+    g.addColorStop(0.15, "rgba(255,160,210,0.9)");
+    g.addColorStop(0.3, "rgba(255,90,175,0.5)");
+    g.addColorStop(0.5, "rgba(220,40,140,0.15)");
+    g.addColorStop(1, "rgba(0,0,0,0)");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, SIZE, SIZE);
+    for (let i = 0; i < 6; i++) {
+      const a = (i / 6) * Math.PI * 2 + Math.PI / 12,
+        r = 160 + (i % 2) * 50,
+        lg = ctx.createLinearGradient(
+          cx,
+          cy,
+          cx + Math.cos(a) * r,
+          cy + Math.sin(a) * r,
+        );
+      lg.addColorStop(0, "rgba(255,150,200,0.5)");
+      lg.addColorStop(0.5, "rgba(255,80,160,0.15)");
+      lg.addColorStop(1, "rgba(0,0,0,0)");
+      ctx.strokeStyle = lg;
+      ctx.lineWidth = 4 + (i % 2) * 3;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + Math.cos(a) * r, cy + Math.sin(a) * r);
+      ctx.stroke();
+    }
   } else {
     const g = ctx.createRadialGradient(cx + 10, cy - 5, 0, cx, cy, SIZE / 2);
     g.addColorStop(0, "rgba(255,240,200,1)");
@@ -154,6 +183,7 @@ export function getSurfaceTexture(type: string) {
     white_star: ["#c8d8f0", "#dde8ff", "#e8f0ff", "#ffffff"],
     sun_like: ["#8b3000", "#cc6600", "#ff9900", "#ffcc44"],
     red_giant: ["#4a0800", "#8b1500", "#cc3300", "#ff6622"],
+    blossom_star: ["#ff99cc", "#ff6eb4", "#ff1493", "#ffe4e1"],
   };
   const [c1, , c3, c4] = cols[type] || cols.sun_like;
   ctx.fillStyle = c1;
